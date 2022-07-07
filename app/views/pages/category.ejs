@@ -19,21 +19,21 @@
     <!-- ARRAY OF PRODUCTS RETURNED BY APP.JS -->
     <section class="categoria">
       <h2>
-        <%= productos[0].categoria %>
+        <%= products[0].categoria %>
       </h2>
 
       <p class="message" id="message"></p>
       <div class="card-collection" style="text-align: center;">
 
-        <% productos.map((producto)=> { %>
+        <% products.map((product)=> { %>
           <div class="card visible">
 
-            <img src="/data/thumbs/<%= producto.imagen %>" alt="thumb" class="product-thumb">
+            <img src="/data/thumbs/<%= product.imagen %>" alt="thumb" class="product-thumb">
 
             <div class="container">
-              <h4 class="product-name"><%= producto.nombre %></h4>
-              <p class="product-description"><%= producto.descripcion %></p>
-              <p class="product-price">$ <%= producto.precio %>
+              <h4 class="product-name"><%= product.nombre %></h4>
+              <p class="product-description"><%= product.descripcion %></p>
+              <p class="product-price">$ <%= product.precio %>
               </p>
             </div>
 
@@ -43,7 +43,7 @@
       </div>
     </section>
 
-    <%- include('../partials/product') %>
+    <%- include('../partials/modal') %>
 
       <%- include('../partials/footer') %>
 

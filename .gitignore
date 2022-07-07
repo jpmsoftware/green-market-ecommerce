@@ -1,0 +1,5 @@
+.vscode
+app/.env
+node_modules/
+/database
+/views
