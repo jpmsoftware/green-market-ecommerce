@@ -33,6 +33,10 @@ body {
   overflow-x: hidden;
 }
 
+.pre-header {
+  background: #000;
+}
+
 header {
   position: relative;
   width: 100%;
