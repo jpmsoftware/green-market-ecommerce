@@ -8,7 +8,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', routes);
 
 app.set('view engine', 'ejs');
-app.set('views', './views');
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
