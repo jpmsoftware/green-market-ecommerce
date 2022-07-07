@@ -3,7 +3,7 @@ var Product = require('../models/Product');
 
 exports.renderHomePage = async (req, res) => {
   let featuredProducts = await Product.getFeaturedProducts();
-  res.render('/pages/index', {featuredProducts});
+  res.render('./pages/index', {featuredProducts});
 }
 
 exports.renderCartPage = (req, res) => {
