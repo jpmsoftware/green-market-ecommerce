@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,22 +9,21 @@
   <link rel="icon" href="/img/favicon.png">
   <title>Green Market - Carrito</title>
 </head>
-
 <body>
-  <%- include('../partials/loading') %>
-
+  <!------------------------------HEADER------------------------------->
+  <%- include('../partials/pre-header') %>
   <%- include('../partials/header') %>
 
-  <section class="carrito">
-    <h2>MI CARRITO</h2>
+  <!------------------------------PRODUCTS----------------------------->
+  <section class="cart">
+    <div class="heading">
+      <h2>Carrito</h2>
+      <hr>
+    </div>
 
-    <p class="msg-carrito" id="msg-carrito">
-      No tiene productos en su carrito
-      <br><br><a href="./">
-        < Volver</a>
-    </p>
+    <p class="msg-carrito" id="msg-carrito"> </p>
 
-    <div class="cart-content-container">
+    <div class="cart-container">
       <div class="left-side">
         <h3>Productos</h3>
         <table class="table" id="table">
@@ -67,14 +65,17 @@
         <p class="total" id="total"></p>
         <a class="btn-buy" id="button-carrito">Finalizar compra</a>
       </div>
-
     </div>
   </section>
 
+  <!-----------------------------FOOTER------------------------------->
   <%- include('../partials/footer') %>
 
+  <!------------------------------OTHER------------------------------->
+  <%- include('../partials/loading') %>
   <div class="mask" id="mask"></div>
 
+  <!-----------------------------SCRIPTS------------------------------>
   <script src="/js/main.js"></script>
   <script defer src="/js/carrito.js"></script>
 </body>

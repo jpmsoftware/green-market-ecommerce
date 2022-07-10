@@ -1,7 +1,7 @@
 var timer = 0;
-var sliderContainer = document.getElementById('slider-container');
+var sliderContainer = document.getElementById('sliders');
 var sliders = document.querySelectorAll('.slider-item');
-var sliderControls = document.querySelectorAll('.slider-controls div');
+var sliderControls = document.querySelectorAll('.sliders .controls div');
 var sliderIndex = 0;
 
 sliderControls.forEach((element) => {

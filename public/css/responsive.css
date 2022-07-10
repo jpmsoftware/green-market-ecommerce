@@ -109,15 +109,6 @@
     height: 10vh;
   }
 
-  .horizontal img {
-    width: 30vw;
-    height: 20vh;
-  }
-
-  .vertical img {
-    height: 20vh;
-  }
-
   .menu {
     margin-top: 2em;
     display: flex;
@@ -207,7 +198,7 @@
     width: 80%;
   }
 
-  .product-thumb {
+  .product-image {
     max-width: 20vw;
     height: 7em;
   }

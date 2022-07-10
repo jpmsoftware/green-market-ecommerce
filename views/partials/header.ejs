@@ -1,67 +1,66 @@
 <header id="header">
-  <div class="pre-header">
-
-  </div>
-  <div class="header-top">
-    <div class="burger" id="burger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-
-    <div class="logo-container">
-      <a href="/">
-        <div class="logo">
-          <img src="/img/logo-green-market.svg" alt="logo">
-        </div>
-      </a>
-    </div>
-
-    <form action="/search" method="GET" class="form-search" id="form-search" autocomplete="off">
-      <input type="search" name="search" class="search-field" id="search-box" placeholder="Buscar...">
-      <div class="button-search" id="btn-search">
-        <img src="/img/icon-search-green.svg" alt="search" class="icon-search" id="icon-search">
-        <input type="submit" style="display: none;"></input>
+  <div class="wrapper">
+    <!-----------------------------------------HEADER TOP----------------------------------------->
+    <div class="top">
+      <div class="burger" id="burger">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-      <div class="search-suggestions" id="search-suggestions"></div>
-    </form>
 
-    <div class="user-panel-container">
-      <div class="user-panel">
-        <i id="search-mobile">
-          <img src="/img/icon-search-black.svg" alt="search" id="icon-search">
-        </i>
-        <i id="favourites">
-          <img src="/img/icon-favourites.svg" alt="favourites">
-        </i>
-        <i id="login" class="login-button" id="login-button">
-          <img src="/img/icon-avatar.svg" alt="login">
-        </i>
-        <i id="cart">
-          <a href="/cart" class="cart">
-            <img src="/img/icon-shopping-cart.svg" alt="carrito">
-            <span class="items-counter">2</span>
+      <div class="logo">
+        <div class="container">
+          <a href="/">
+            <img src="/img/logo-green-market.svg" alt="logo">
           </a>
-        </i>
+        </div>
+      </div>
+
+      <form action="/search" method="GET" class="search-form" id="search-form" autocomplete="off">
+        <input type="search" name="search" class="textbox" id="search-box" placeholder="Buscar..." required>
+        <div class="icon-search-container" id="btn-search">
+          <img src="/img/icon-search.svg" alt="search" class="icon-search" id="icon-search">
+          <input type="submit" style="display: none;"></input>
+        </div>
+        <div class="suggestions" id="suggestions"></div>
+      </form>
+      
+      <div class="user-panel-container">
+        <div class="user-panel">
+          <!--MOBILE ONLY-->
+          <img style="display: none;" src="/img/icon-search-black.svg" alt="search" id="icon-search">
+          <!--MOBILE ONLY-->
+          <div class="login-icon">
+            <img src="/img/icon-avatar.svg" alt="login">
+            <span>Iniciar sesión/<br>Registrarse</span>
+          </div>
+          <div class="cart-icon">
+            <a href="/cart" class="cart">
+              <img src="/img/icon-shopping-cart.svg" alt="carrito">
+              <span>Ver carrito</span>
+            </a>
+            <span class="items-counter">2</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="header-bottom" id="header-bottom">
-    <ul class="menu">
-      <li><a href="/category/Cereales%20y%20semillas">CEREALES & SEMILLAS</a></li>
-      <li><a href="/category/Bebidas">BEBIDAS</a></li>
-      <li><a href="/category/Aderezos">ADEREZOS</a></li>
-      <li><a href="/category/Condimentos">CONDIMENTOS</a></li>
-      <li><a href="/category/Leches%20vegetales">LECHES VEGETALES</a></li>
-      <li><a href="/category/Quesos%20y%20fiambres veganos">QUESOS & FIAMBRES VEGANOS</a></li>
-      <li><a href="/category/Congelados">CONGELADOS</a></li>
-      <li><a href="/category/Cuidado%20personal">CUIDADO PERSONAL</a></li>
-      <img src="/img/icon-close.svg" alt="close" class="icon-close" id="icon-close">
-    </ul>
+    <!-----------------------------------------HEADER BOTTOM----------------------------------------->
+    <div class="bottom" id="header-bottom">
+      <ul class="menu">
+        <li><a href="/category/Cereales%20y%20semillas">CEREALES & SEMILLAS</a></li>
+        <li><a href="/category/Bebidas">BEBIDAS</a></li>
+        <li><a href="/category/Aderezos">ADEREZOS</a></li>
+        <li><a href="/category/Condimentos">CONDIMENTOS</a></li>
+        <li><a href="/category/Leches%20vegetales">LECHES VEGETALES</a></li>
+        <li><a href="/category/Quesos%20y%20fiambres veganos">QUESOS & FIAMBRES VEGANOS</a></li>
+        <li><a href="/category/Congelados">CONGELADOS</a></li>
+        <li><a href="/category/Cuidado%20personal">CUIDADO PERSONAL</a></li>
+        <img src="/img/icon-close.svg" alt="close" class="icon-close" id="icon-close">
+      </ul>
+    </div>
   </div>
 
   <%- include('../partials/login') %>
-
   <script src="/js/login.js"></script>
 </header>

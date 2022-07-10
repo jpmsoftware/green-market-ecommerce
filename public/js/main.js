@@ -14,7 +14,7 @@ var cards = document.querySelectorAll('.card');
 var btnSearch = document.getElementById('btn-search');
 var quantityElement = document.getElementById('cantidad');
 var iconSearch = document.getElementById('icon-search');
-var searchForm = document.getElementById('form-search');
+var searchForm = document.getElementById('search-form');
 var plusIcon = document.getElementById('plus');
 var minusIcon = document.getElementById('minus');
 var menuElement = document.getElementById('categories-menu');
@@ -70,7 +70,7 @@ searchInput.addEventListener('keyup', (e) => {
   }
 });
 
-btnSearch.addEventListener('click', () => document.forms.namedItem('form-search').submit());
+btnSearch.addEventListener('click', () => document.forms.namedItem('search-form').submit());
 
 burger.addEventListener('click', () => {
   mobileMenu.classList.toggle('visible');
@@ -136,7 +136,7 @@ cards.forEach((element) => {
       nombre: element.querySelector('.product-name').innerHTML,
       descripcion: element.querySelector('.product-description').innerHTML,
       precio: element.querySelector('.product-price').innerHTML,
-      img: element.querySelector('.product-thumb').src
+      img: element.querySelector('.product-image').src
     }
 
     openProduct(producto);
@@ -177,7 +177,7 @@ btnAddProduct.addEventListener('click', () => {
   // Show 'product added message'
   msg.classList.toggle('visible');
   document.getElementById('product-name').innerHTML = producto.nombre;
-  document.getElementById('product-thumb').src = '/data/thumbs/' + producto.img;
+  document.getElementById('product-image').src = '/data/thumbs/' + producto.img;
 
   window.setTimeout(() => {
     msg.classList.toggle('visible');

@@ -9,57 +9,135 @@
   <link rel="icon" href="/img/favicon.png">
   <title>Green Market</title>
 </head>
-
 <body>
-  <%- include('../partials/loading') %>
-
+  <!------------------------------HEADER------------------------------->
+  <%- include('../partials/pre-header') %>
   <%- include('../partials/header') %>
 
-  <div class="slider-container" id="slider-container">
-    <div class="slider-item">
-      <img src="/img/banner-beyond-meat.jpg" alt="banner">
+  <!------------------------------SLIDER------------------------------->
+  <div class="sliders" id="sliders">
+    <div class="slider">
+      
     </div>
-
-    <div class="slider-item">
-      <img src="/img/banner-vegalatto.jpg" alt="banner">
-    </div>
-
-    <div class="slider-item">
-      <img src="/img/Cyber_monday_with_neon_light_shape_background_design.jpg" alt="banner">
-    </div>
-        
-    <div class="slider-controls" id="slider-controls">
-      <div></div>
+    
+    <div class="controls" id="controls">
       <div></div>
       <div></div>
     </div>
   </div>
 
-  <div class="banner-container horizontal">
-    <img src="" alt="banner">
-    <img src="" alt="banner">
-    <img src="" alt="banner">
+  <!----------------------------CATEGORIES----------------------------->
+  <section class="categories">
+    <div class="heading">
+      <h2>Explorar categorías</h2>
+      <hr>
+    </div>
+
+    <div class="container">
+      <a class="category" href="/category/cereales&semillas">
+        <div class="thumb">
+          <img src="/img/category-cereales.jpg" alt="cereales">
+        </div>
+        <p>Cereales y semillas</p>
+      </a>
+
+      <a class="category" href="/category/bebidas">
+        <div class="thumb">
+          <img src="/img/category-bebidas.jpg" alt="bebidas">
+        </div>
+        <p>Bebidas</p>
+      </a>
+
+      <a class="category" href="/category/aderezos">
+        <div class="thumb">
+          <img src="/img/category-aderezos.jpg" alt="aderezos">
+        </div>
+        <p>Aderezos</p>
+      </a>
+
+      <a class="category" href="/category/leches vegetales">
+        <div class="thumb">
+          <img src="/img/category-leches.jpg" alt="leches">
+        </div>
+        <p>Leches vegetales</p>
+      </a>
+
+      <a class="category" href="/category/quesos y fiambres veganos">
+        <div class="thumb">
+          <img src="/img/category-quesos.jpg" alt="quesos">
+        </div>
+        <p>Quesos y fiambres<br>veganos</p>
+      </a>
+
+      <a class="category" href="/category/congelados">
+        <div class="thumb">
+          <img src="/img/category-congelados.jpg" alt="congelados">
+        </div>
+        <p>Congelados</p>
+      </a>
+
+      <a class="category" href="/category/cuidado personal">
+        <div class="thumb">
+          <img src="/img/category-cuidado.jpg" alt="cuidado">
+        </div>
+        <p>Cuidado personal</p>
+      </a>
+    </div>  
+  </section>
+  
+  <!---------------------------FIXED BANNER---------------------------->
+  <div class="first-banner">
+    <div class="banner"></div>
+    <div class="banner"></div>
   </div>
 
-  <%- include('../partials/featured') %>
+  <!-------------------------FEATURED PRODUCTS------------------------->
+  <section class="featured">
+    <div class="heading">
+      <h2>Productos destacados</h2>
+      <hr>
+    </div>
+    
+    <div class="products">
+      <% for (var i=0; i < featuredProducts.length; i++) { %>
+        <div class="card">
+          <div class="thumb-container">
+            <img src="/data/thumbs/small/<%= featuredProducts[i].img %>" class="product-image" alt="image">
+          </div>
+          <div class="info">
+            <h4 class="product-name"><%= featuredProducts[i].name %></h4>
+            <p class="product-price">$ <%= featuredProducts[i].price %></p>
+            <button class="button-add">Agregar al carrito</button>
+          </div>
+        </div>
+        <% } %>
+    </div>
+  </section>
 
-  <div class="banner-container vertical">
-    <img src="/img/banner_picada_naturezas.jpg" alt="banner">
-    <img src="/img/banner-beyond-meat-burger.jpg" alt="banner">
+  <!---------------------------FIXED BANNER---------------------------->
+  <div class="banner">
+    
   </div>
 
-  <div class="banner-container">
-
+  <!------------------------------BRANDS------------------------------->
+  <div class="brands">
+    <img src="/img/logo-laabundancia.jpg" alt="laabundancia">
+    <img src="/img/logo-violife.jpg" alt="violife">
+    <img src="/img/logo-oroverde.jpg" alt="oroverde">
+    <img src="/img/logo-vegetalex.jpg" alt="vegetalex">
+    <img src="/img/logo-valsoia.jpg" alt="valsoia">
   </div>
 
-  <%- include('../partials/modal') %>
-
-  <%- include ('../partials/msg') %>
-
+  <!------------------------------FOOTER------------------------------->
   <%- include('../partials/footer') %>
 
+  <!------------------------------OTHERS------------------------------->
+  <%- include('../partials/modal') %>
+  <%- include ('../partials/msg') %>
+  <%- include('../partials/loading') %>
   <div class="mask" id="mask"></div>
 
+  <!------------------------------SCRIPTS------------------------------>
   <script src="/js/main.js" defer></script>
   <script src="/js/products.js" defer></script>
   <script src="/js/slideshow.js" defer></script>

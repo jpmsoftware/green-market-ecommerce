@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,59 +9,56 @@
   <link rel="icon" href="/img/favicon.png">
   <title>Green Market</title>
 </head>
-
 <body>
+  <!------------------------------HEADER------------------------------->
+  <%- include('../partials/pre-header') %>
   <%- include('../partials/header') %>
 
-  <%- include('../partials/loading') %>
+  <!------------------------------PRODUCTS----------------------------->
+  <section class="category">
+    <div class="heading">
+      <h2>Categoría</h2>
+      <hr>
+    </div>
 
-    <!-- ARRAY OF PRODUCTS RETURNED BY APP.JS -->
-    <section class="categoria">
-      <h2>
-        <%= products[0].categoria %>
-      </h2>
+    <p class="message" id="message"></p>
 
-      <p class="message" id="message"></p>
-      <div class="card-collection" style="text-align: center;">
-
-        <% products.map((product)=> { %>
-          <div class="card visible">
-
-            <img src="/data/thumbs/<%= product.imagen %>" alt="thumb" class="product-thumb">
-
-            <div class="container">
-              <h4 class="product-name"><%= product.nombre %></h4>
-              <p class="product-description"><%= product.descripcion %></p>
-              <p class="product-price">$ <%= product.precio %>
-              </p>
-            </div>
-
+    <div class="products">
+      <% products.map((product)=> { %>
+        <div class="card">
+          <div class="thumb-container">
+            <img src="/data/thumbs/small/<%= product.img %>" class="product-image" alt="image">
           </div>
-          <% }) %>
-
+          <div class="info">
+            <h4 class="product-name"><%= product.name %></h4>
+            <p class="product-price">$ <%= product.price %></p>
+            <button class="button-add">Agregar al carrito</button>
+          </div>
+        </div>
+        <% }) %>
       </div>
-    </section>
+  </section>
 
-    <%- include('../partials/modal') %>
+  <!-----------------------------FOOTER------------------------------->
+  <%- include('../partials/footer') %>
 
-      <%- include('../partials/footer') %>
+  <!------------------------------OTHER------------------------------->
+  <%- include('../partials/modal') %>
+  <%- include ('../partials/msg') %>
+  <%- include('../partials/loading') %>
+  <div class="mask" id="mask"></div>
 
-            <%- include ('../partials/msg') %>
+  <!-----------------------------SCRIPTS------------------------------>
+  <script src="/js/main.js"></script>
+  <script>
+    let message = document.getElementById('message');
+    let cardCount = document.querySelectorAll('.card').length;
 
-              <div class="mask" id="mask"></div>
+    cardCount < 1
+      ? message.innerHTML = `No se encontraron productos`
+      : message.innerHTML = `Se encontraron <b>${cardCount} productos</b>`;
 
-              <script src="/js/main.js"></script>
-
-              <script>
-                let message = document.getElementById('message');
-                let cardCount = document.querySelectorAll('.card').length;
-
-                cardCount < 1
-                  ? message.innerHTML = `No se encontraron productos`
-                  : message.innerHTML = `Se encontraron <b>${cardCount} productos</b>`;
-
-                message.classList.toggle('visible');
-              </script>
+    message.classList.toggle('visible');
+  </script>
 </body>
-
 </html>
