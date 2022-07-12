@@ -1,4 +1,4 @@
 .vscode
-app/.env
+.env
 node_modules/
 /database

@@ -15,7 +15,7 @@
   <%- include('../partials/header') %>
 
   <!------------------------------PRODUCTS----------------------------->
-  <section class="category">
+  <section class="section-category">
     <div class="heading">
       <h2>Categoría</h2>
       <hr>
@@ -31,6 +31,7 @@
           </div>
           <div class="info">
             <h4 class="product-name"><%= product.name %></h4>
+            <span class="product-description" style="display: none"></span>
             <p class="product-price">$ <%= product.price %></p>
             <button class="button-add">Agregar al carrito</button>
           </div>
@@ -46,6 +47,7 @@
   <%- include('../partials/modal') %>
   <%- include ('../partials/msg') %>
   <%- include('../partials/loading') %>
+  <%- include('../partials/login') %>
   <div class="mask" id="mask"></div>
 
   <!-----------------------------SCRIPTS------------------------------>

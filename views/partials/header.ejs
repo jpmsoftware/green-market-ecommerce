@@ -2,18 +2,18 @@
   <div class="wrapper">
     <!-----------------------------------------HEADER TOP----------------------------------------->
     <div class="top">
-      <div class="burger" id="burger">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-
       <div class="logo">
         <div class="container">
           <a href="/">
             <img src="/img/logo-green-market.svg" alt="logo">
           </a>
         </div>
+      </div>
+
+      <div class="burger" id="burger">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
 
       <form action="/search" method="GET" class="search-form" id="search-form" autocomplete="off">
@@ -30,7 +30,7 @@
           <!--MOBILE ONLY-->
           <img style="display: none;" src="/img/icon-search-black.svg" alt="search" id="icon-search">
           <!--MOBILE ONLY-->
-          <div class="login-icon">
+          <div class="login-icon" id="login-icon">
             <img src="/img/icon-avatar.svg" alt="login">
             <span>Iniciar sesión/<br>Registrarse</span>
           </div>
@@ -61,6 +61,5 @@
     </div>
   </div>
 
-  <%- include('../partials/login') %>
   <script src="/js/login.js"></script>
 </header>

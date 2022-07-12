@@ -15,17 +15,15 @@
   <%- include('../partials/header') %>
 
   <!------------------------------PRODUCTS----------------------------->
-  <section class="cart">
+  <section class="section-cart">
     <div class="heading">
-      <h2>Carrito</h2>
-      <hr>
+      <h3>Mi carrito</h3>
     </div>
 
     <p class="msg-carrito" id="msg-carrito"> </p>
 
     <div class="cart-container">
       <div class="left-side">
-        <h3>Productos</h3>
         <table class="table" id="table">
           <thead>
             <th></th>
@@ -37,34 +35,52 @@
           </thead>
           <tbody></tbody>
         </table>
+
+        <p class="total" id="total"></p>
       </div>
 
       <div class="right-side">
-        <h3>Medio de pago</h3>
+        <h3>Pagos</h3>
+        <h2>Medio de pago</h2>
         <div class="payment-options">
           <div>
             <label for="credit-debit">
               <input type="radio" name="payment" id="credit-debit" value="credit_debit" checked> Tarjeta de crédito
               o débito
             </label>
-          </div>
 
-          <div>
             <label for="paypal">
-              <input type="radio" name="payment" id="paypal" value="paypal"> Pagar con PayPal
+              <input type="radio" name="payment" id="paypal" value="paypal"> PayPal
             </label>
+          </div>
+          
+          <div>
+            <label for="">
+              Tu nombre tal cual figura en la Tarjeta
+            </label>
+            <input type="text" class="card-name">
           </div>
 
           <div>
-            <label for="cash">
-              <input type="radio" name="payment" id="cash" value="cash"> Efectivo en la entrega
+            <label for="">
+              Número de la tarjeta
             </label>
+            <input type="text" class="card-number">
+          </div>
+
+          <div>
+            <label for="">
+              Fecha de vencimiento
+            </label>
+            <input type="text" class="card-expires">
           </div>
         </div>
 
-        <p class="total" id="total"></p>
-        <a class="btn-buy" id="button-carrito">Finalizar compra</a>
+        
+        <a class="btn-buy" id="button-carrito">Continuar</a>
       </div>
+
+      
     </div>
   </section>
 
@@ -73,6 +89,7 @@
 
   <!------------------------------OTHER------------------------------->
   <%- include('../partials/loading') %>
+  <%- include('../partials/login') %>
   <div class="mask" id="mask"></div>
 
   <!-----------------------------SCRIPTS------------------------------>

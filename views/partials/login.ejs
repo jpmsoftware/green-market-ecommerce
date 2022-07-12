@@ -1,20 +1,19 @@
 <div class="login-window" id="login-window">
+  <h2>Iniciar sesión</h2>
+
   <form action="/login" method="POST">
-    <h2>Iniciar sesión</h2>
-    <div class="content">
-      <label for="">E-Mail:</label>
-      <input type="email" name="email" required>
-      <label for="">Contraseña:</label>
-      <input type="password" name="password" required>
-      <label for="remeber-user-data" class="remember-user-data">
-        <input type="checkbox" name="checkbox-remeber-user-data" id="remeber-user-data" >
-        Recordarme
-      </label>
-  
-      <input type="submit" class="btn-login" id="btn-login" value="Ingresar">
-      <div>
-        <a href="/signup">Registrarse</a>
-      </div>
+    <label for="">E-Mail
+      <input type="email" name="email" class="user-email" placeholder="Escribe tu E-Mail" required>
+    </label>
+
+    <label for="">Contraseña
+      <input type="password" name="password" class="user-pass" placeholder="Escribe tu Contraseña" required>
+    </label>
+
+    <input type="submit" class="btn-login" id="btn-login" value="Ingresar">
+
+    <div>
+      <a href="/signup">Registrarse</a>
     </div>
   </form>
 </div>

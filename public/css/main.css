@@ -31,6 +31,12 @@ body {
   overflow-x: hidden;
 }
 
+/* clears the ‘X’ from Chrome - DO NOT delete */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
 /*-----------------------PRE HEADER-----------------------*/
 .pre-header {
   padding: .5em 0;
@@ -45,7 +51,7 @@ body {
 .pre-header .container {
   display: flex;
   justify-content: space-between;
-  width: 65%;
+  width: 60%;
 }
 
 .pre-header span {
@@ -186,6 +192,10 @@ header .top > * {
   opacity: .5;
 }
 
+.visible {
+  display: block;
+}
+
 .user-panel {
   float: right;
   display: flex;
@@ -201,19 +211,18 @@ header .top > * {
 
 .user-panel span {
   font-size: .8rem;
-  font-weight: medium;
 }
 
 .items-counter {
   position: absolute;
   top: -10%;
-  left: 10%;
+  left: 25%;
   padding: .2em;
   color: var(--blue);
   font-weight: bold;
 }
 
-.login-icon, .cart-icon, .cart {
+.login-icon, .cart-icon, .cart-icon a {
   display: inline-flex;
   align-items: center;
 }
@@ -262,21 +271,26 @@ header .bottom {
 
 /*-------------------------SLIDER-------------------------*/
 .sliders {
-  position: relative;
   margin: 0 auto;
+  position: relative;
   height: 40em;
-  display: flex;
   cursor: pointer;
+  
 }
 
 .slider {
   position: relative;
+  width: 100%;
+  height: 100%;
   background: #f4f4f4;
+}
+
+.slider img {
   width: 100%;
   height: 100%;
 }
 
-.controls {
+.slider .controls {
   position: absolute;
   bottom: 10%;
   left: 50%;
@@ -287,7 +301,7 @@ header .bottom {
   cursor: pointer;
 }
 
-.controls div {
+.slider .controls div {
   margin: 0 .75em;
   width: 1em;
   height: 1em;
@@ -296,11 +310,20 @@ header .bottom {
 }
 
 /*------------------------HEADINGS------------------------*/
-h2 {
+.heading h2 {
   margin-top: 2em;
   font-size: 1.75rem;
   font-weight: 500;
   text-align: center;
+}
+
+.section-cart h3 {
+  font-size: 1.4rem;
+}
+
+.section-cart h2 {
+  margin-top: 2em;
+  font-size: 1rem;
 }
 
 .heading hr {
@@ -308,7 +331,7 @@ h2 {
   border: none;
   outline: none;
   width: 4em;
-  height: 4px;
+  height: 5px;
   background: var(--orange);
 }
 
@@ -447,10 +470,16 @@ h2 {
 
 /*----------------------SECOND BANNER---------------------*/
 .banner {
+  position: relative;
   margin: 4em auto 0 auto;
   width: 100%;
   height: 40vh;
   background: #f4f4f4;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
 }
 
 /*-------------------------BRANDS-------------------------*/
@@ -594,8 +623,8 @@ footer .payments {
 
 .modal .product-name {
   margin-left: 0;
-  font-size: 1.8rem;
-  font-weight: 300;
+  font-size: 1.6rem;
+  font-weight: 400;
   color: #000;
 }
 
@@ -606,7 +635,7 @@ footer .payments {
   line-height: 1.5em;
 }
 
-.modal .price {
+.modal .product-price {
   margin-left: 0;
   margin-top: 3em;
   font-size: 2.2rem;
@@ -615,57 +644,59 @@ footer .payments {
 }
 
 .buy-panel {
-  width: 100%;
   position: absolute;
   bottom: 0;
   display: flex;
   justify-content: space-between;
+  width: 100%;
   font-size: 1rem;
 }
 
 .buy-panel p {
-  font-size: 1.1rem;
-  color: var(--mid-gray);
-  margin: auto 0;
+  margin: auto 1em auto 0;
+  height: fit-content;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, .7);
 }
 
-.controls {
-  margin: auto 0;
-  width: 6em;
-  position: relative;
+.buy-panel .controls {
+  margin: auto 4em auto 0;
+  position: relative;  
   display: flex;
-  justify-content: space-between;
-  margin-right: .5em;
+  height: fit-content;
+  align-items: center;
   border: 1px solid lightgray;
   border-radius: 3px;
   text-align: center;
   cursor: default;
 }
 
-.controls div {
+.buy-panel .controls div {
   position: relative;
   padding: .5em;
   flex: 1;
   cursor: pointer;
 }
 
-.controls div:first-child, 
-.controls div:last-child {
+.minus, 
+.plus {
+  min-width: 2em;
   background: #f4f4f4;
 }
 
-.controls div:first-child:hover, 
-.controls div:last-child:hover {
+.minus:hover, 
+.plus:hover {
   background: lightgray;
 }
 
-.controls div::selection {
+.minus::selection,
+.plus::selection {
   background: none;
 }
 
 .qty-container {
   background: #fff;
-  flex: 1;
+  min-width: 2em;
 }
 
 .items-cantidad {
@@ -683,12 +714,16 @@ footer .payments {
   flex: 1;
 }
 
-.modal .button {
-
-}
-
-.modal .button:hover {
-
+.btn-add {
+  padding: 1.5em 3em;
+  background: var(--blue);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .icon-close-modal {
@@ -805,10 +840,11 @@ footer .payments {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 1em;
-  padding: 5em;
+  border-radius: .5em;
+  padding: 2em;
+  background: #fff;
   flex-direction: column;
-  z-index: 5;
+  z-index: 2;
   animation: fade-in .4s 1, move-down .4s 1;
 }
 
@@ -818,52 +854,38 @@ footer .payments {
   width: 100%;
   text-align: center;
   padding: .5em;
-  color: #fff;
-  background: var(--green);
+  color: #000;
 }
 
-.login-window .content {
-  padding: 2em;
+.login-window label {
   display: flex;
   flex-direction: column;
-  background: #fff;
-}
-
-.login-window label,
-.register-form label {
+  font-size: .9rem;
   margin-top: 2em;
 }
 
-.login-window input[type="email"],
-.login-window input[type="password"] {
-  margin-top: 1rem;
-  padding: .8em;
+.user-email,
+.user-pass {
+  padding: .5em 0;
+  min-width: 20em;
   height: 3em;
-  font-size: 1rem;
-  border: 1px solid rgba(0, 0, 0, .2);
-  border-radius: .3em;
+  font-size: .9rem;
+  border: none;
   outline: none;
-}
-
-.remember-user-data {
-  cursor: pointer;
-}
-
-.login-window input[type="checkbox"] {
-  margin-right: .75em;
-  width: 1.5em;
-  height: 1.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
 .btn-login {
-  margin-top: 2em;
+  margin-top: 3em;
   border: none;
   outline: none;
-  padding: 1em;
-  font-size: 1.2rem;
-  color: #fff;
-  border-radius: 2px;
+  padding: .8em 1em;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 1.2em;
   background: var(--green);
+  color: #fff;
   cursor: pointer;
 }
 
@@ -879,7 +901,9 @@ footer .payments {
 }
 
 .login-window a {
-  color: var(--light-blue);
+  margin-top: 2em;
+  display: block;
+  text-align: center;
 }
 
 /*---------------------------CART-------------------------*/
@@ -922,11 +946,14 @@ footer .payments {
 }
 
 .table th {
-  opacity: .5;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: .9rem;
   text-align: left;
   padding: 1.75em 0;
+}
+
+.table th:nth-child(2) {
+  min-width: 10em;
 }
 
 .table td {
@@ -938,6 +965,10 @@ footer .payments {
 
 .table td:first-child {
   text-align: center;
+}
+
+.table td:nth-child(2) {
+  min-width: 10em;
 }
 
 .table tr {
@@ -984,15 +1015,25 @@ footer .payments {
 
 .total {
   display: none;
-  text-align: left;
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin: 1em 0;
+  text-align: right;
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin: .5em 3em;
+}
+
+.card-name, .card-number, .card-expires {
+  margin-top: .5em;
+  outline: none;
+  border: 1px solid lightgray;
+  padding: .5em;
 }
 
 .btn-buy {
+  margin-top: 2em;
   display: none;
-  padding: 2.5em;
+  padding: 1em 0;
+  width: 100%;
+  text-align: center; 
   color: #fff;
   border-radius: 5px;
   background: var(--green);
@@ -1007,26 +1048,25 @@ footer .payments {
 .right-side {
   margin-left: 2em;
   padding: 2em;
-  border: 1px solid var(--border-color);
-  height: 55%;
+  background: rgba(70, 210, 120, .07);
+  height: 100%;
   border-radius: 10px;
 }
 
-.sight-side p {
-  margin-left: 1em;
+.payment-options {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
 }
 
 .payment-options div {
   margin: .5em 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .payment-options * {
   cursor: pointer;
-}
-
-.btn-buy {
-  margin-bottom: 5em;
-  float: left;
 }
 
 .carrito h3 {
@@ -1066,15 +1106,13 @@ footer .payments {
 }
 
 /*--------------------------OTHER-------------------------*/
-.featured,
-.search,
-.cart {
+.section-featured,
+.section-search,
+.section-cart,
+.section-category {
   position: relative;
   margin: 1em auto;
   width: 70%;
-}
-
-.search {
   min-height: 100vh;
 }
 
@@ -1194,7 +1232,3 @@ h3 {
 .block-scroll { 
   overflow-y: hidden; 
 }
-
-/*
-before: 1200 lines
-*/ 

@@ -3,7 +3,7 @@ var loading = document.getElementById('loading');
 var header = document.getElementById('header');
 var body = document.querySelector('body');
 var mask = document.getElementById('mask');
-var dialog = document.querySelector('.modal');
+var modal = document.querySelector('.modal');
 var burger = document.getElementById('burger');
 var mobileMenu = document.getElementById('header-bottom');
 var btnAddProduct = document.getElementById('agregar');
@@ -20,12 +20,14 @@ var minusIcon = document.getElementById('minus');
 var menuElement = document.getElementById('categories-menu');
 var msg = document.getElementById('msg');
 var searchInput = document.getElementById('search-box');
-var searchSuggestionsElement = document.getElementById('search-suggestions');
+var autoCompleteElement = document.getElementById('suggestions');
 var itemsCounterElement = document.querySelector('.items-counter');
-var loginButton = document.getElementById('login');
+var loginIcon = document.getElementById('login-icon');
 var loginWindow = document.getElementById('login-window');
 
-window.onload = async function () {
+/*===================================================================*\
+\*==========================EVENT HANDLERS===========================*/
+window.onload = async () => {
   suggestions = await loadSuggestions();
 
   countItems();
@@ -41,17 +43,13 @@ window.onscroll = () => {
   }
 }
 
-favourites.addEventListener('click', () => {
-  alert('Aún no ha agregado ningun producto a "favoritos"');
-});
-
 searchInput.addEventListener('keyup', (e) => {
   if (searchInput.value.length > 0) {
     let elements = searchSuggestions(searchInput.value);
 
-    searchSuggestionsElement.classList.add('visible');
+    autoCompleteElement.classList.add('visible');
 
-    searchSuggestionsElement.innerHTML = '';
+    autoCompleteElement.innerHTML = '';
 
     elements.forEach((element) => {
       let paragraph = document.createElement('p');
@@ -62,11 +60,11 @@ searchInput.addEventListener('keyup', (e) => {
 
       paragraph.appendChild(anchor);
 
-      searchSuggestionsElement.appendChild(paragraph);
+      autoCompleteElement.appendChild(paragraph);
     });
 
   } else {
-    searchSuggestionsElement.classList.remove('visible');
+    autoCompleteElement.classList.remove('visible');
   }
 });
 
@@ -86,9 +84,10 @@ iconSearch.addEventListener('click', () => {
   // searchForm.classList.toggle('visible');
 });
 
-loginButton.addEventListener('click', () => {
+loginIcon.addEventListener('click', () => {
   mask.classList.toggle('visible');
-  loginWindow.classList.toggle('flex');
+  loginWindow.classList.toggle('visible');
+  loginWindow.classList.add('top');
   body.classList.toggle('block-scroll');
 });
 
@@ -96,16 +95,18 @@ mask.addEventListener('click', () => {
   closeTopElements();
 });
 
-function openProduct(product) {
-  dialog.classList.toggle('flex');
+/*===================================================================*\
+\*=============================FUNCTIONS=============================*/
+function openProduct(producto) {
+  modal.classList.toggle('flex');
   mask.classList.toggle('visible');
   body.classList.toggle('block-scroll');
 
   // Get selected product details
-  dialog.querySelector('.product-info h1').innerHTML = product.nombre;
-  dialog.querySelector('.product-description').innerHTML = product.descripcion;
-  dialog.querySelector('.thumb-big').src = product.img;
-  dialog.querySelector('.product-info .price').innerHTML = product.precio;
+  modal.querySelector('.modal .product-name').innerHTML = producto.nombre;
+  modal.querySelector('.modal .product-description').innerHTML = producto.descripcion;
+  modal.querySelector('.modal .thumb-big').src = producto.img;
+  modal.querySelector('.modal .product-price').innerHTML = producto.precio;
 
   document.getElementById('cantidad').value = 1;
   document.getElementById('agregar').innerHTML = 'Agregar';
@@ -138,7 +139,6 @@ cards.forEach((element) => {
       precio: element.querySelector('.product-price').innerHTML,
       img: element.querySelector('.product-image').src
     }
-
     openProduct(producto);
   });
 });
@@ -156,9 +156,9 @@ closeIcon.addEventListener('click', () => closeTopElements());
 btnAddProduct.addEventListener('click', () => {
   let productos = [];
   let producto = {
-    nombre: document.querySelector('.product-info h1').innerHTML,
-    cantidad: parseInt(document.querySelector('#cantidad').value),
-    precio: parseInt(document.querySelector('.price').innerHTML.substr(2)),
+    nombre: document.querySelector('.modal .product-name').innerHTML,
+    cantidad: parseInt(document.querySelector('.modal #cantidad').value),
+    precio: parseInt(document.querySelector('.modal .product-price').innerHTML.substr(2)),
     img: document.querySelector('.modal img:first-child').src
   }
 
@@ -177,7 +177,7 @@ btnAddProduct.addEventListener('click', () => {
   // Show 'product added message'
   msg.classList.toggle('visible');
   document.getElementById('product-name').innerHTML = producto.nombre;
-  document.getElementById('product-image').src = '/data/thumbs/' + producto.img;
+  document.getElementById('product-image').src = '/data/thumbs/small/' + producto.img;
 
   window.setTimeout(() => {
     msg.classList.toggle('visible');
@@ -198,9 +198,8 @@ function countItems() {
 }
 
 async function loadSuggestions() {
-  // load suggestions.json file
+  // Load suggestions file
   let file = await fetch('/data/suggestions.json');
-
   let data = await file.json();
 
   return data;
@@ -221,7 +220,10 @@ function searchSuggestions(input) {
   return data;
 }
 
-function closeTopElements() {
+const closeTopElements = () => {
+  /* When user clicks on blank screen, this function 
+  hides all top elements (z-index) */
+
   let topElements = document.getElementsByClassName('top');
 
   Array.from(topElements).forEach(element => {

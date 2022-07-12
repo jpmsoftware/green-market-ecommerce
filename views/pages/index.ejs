@@ -17,7 +17,7 @@
   <!------------------------------SLIDER------------------------------->
   <div class="sliders" id="sliders">
     <div class="slider">
-      
+      <img src="/img/banner_01.jpg" alt="">
     </div>
     
     <div class="controls" id="controls">
@@ -34,7 +34,7 @@
     </div>
 
     <div class="container">
-      <a class="category" href="/category/cereales&semillas">
+      <a class="category" href="/category/cereales y semillas">
         <div class="thumb">
           <img src="/img/category-cereales.jpg" alt="cereales">
         </div>
@@ -85,14 +85,8 @@
     </div>  
   </section>
   
-  <!---------------------------FIXED BANNER---------------------------->
-  <div class="first-banner">
-    <div class="banner"></div>
-    <div class="banner"></div>
-  </div>
-
   <!-------------------------FEATURED PRODUCTS------------------------->
-  <section class="featured">
+  <section class="section-featured">
     <div class="heading">
       <h2>Productos destacados</h2>
       <hr>
@@ -106,6 +100,7 @@
           </div>
           <div class="info">
             <h4 class="product-name"><%= featuredProducts[i].name %></h4>
+            <span class="product-description" style="display: none"><%= featuredProducts[i].description %></span>
             <p class="product-price">$ <%= featuredProducts[i].price %></p>
             <button class="button-add">Agregar al carrito</button>
           </div>
@@ -116,7 +111,7 @@
 
   <!---------------------------FIXED BANNER---------------------------->
   <div class="banner">
-    
+    <img src="/img/banner-vegalatto.jpg" alt="banner">
   </div>
 
   <!------------------------------BRANDS------------------------------->
@@ -135,6 +130,7 @@
   <%- include('../partials/modal') %>
   <%- include ('../partials/msg') %>
   <%- include('../partials/loading') %>
+  <%- include('../partials/login') %>
   <div class="mask" id="mask"></div>
 
   <!------------------------------SCRIPTS------------------------------>

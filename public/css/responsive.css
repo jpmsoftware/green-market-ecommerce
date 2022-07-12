@@ -2,8 +2,24 @@
   Mobile
 \*----------------------------------------*/
 @media only screen and (max-width: 960px) {
+  .pre-header .wrapper {
+    width: 90%;
+  }
+
+  .pre-header .container {
+    width: 100%;
+  }
+
+  .pre-header span:nth-child(2) {
+    display: none;
+  }
+
   header {
     width: 100%;
+  }
+
+  header .wrapper {
+    width: 90%;
   }
 
   .header-top {
@@ -16,15 +32,6 @@
 
   .header-bottom {
     display: none;
-    margin-top: 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: var(--green);
-    padding: 2em;
-    width: 100vw;
-    height: 100vh;
-    animation: mobile-menu .7s 1;
   }
 
   .logo img {
@@ -76,7 +83,16 @@
 
   .user-panel {
     margin-right: .5em;
-    width: 30vw;
+    width: 15vw;
+  }
+
+  .categories .container {
+    width: 90%;
+    display: grid;
+  }
+
+  .user-panel span:nth-child(2) {
+    display: none;
   }
 
   .user-panel a {
@@ -109,9 +125,17 @@
     height: 10vh;
   }
 
+  .search-form {
+    display: none;
+  }
+
+  .login-icon {
+    margin-right: 0;
+  }
+
   .menu {
+    display: none;
     margin-top: 2em;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 50%;

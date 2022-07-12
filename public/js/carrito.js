@@ -22,7 +22,7 @@ function updateTable() {
         productos.map((producto) => {
             output +=
                 `<tr>
-                    <td><img src="/data/thumbs/${producto.img}" class="carrito-thumb" alt="img"></td>
+                    <td><img src="/data/thumbs/small/${producto.img}" class="carrito-thumb" alt="img"></td>
                     <td>${producto.nombre}</td>
                     <td>$${producto.precio}</td> 
                     <td>${producto.cantidad}</td>
