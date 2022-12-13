@@ -2,16 +2,8 @@
   Mobile
 \*----------------------------------------*/
 @media only screen and (max-width: 960px) {
-  .pre-header .wrapper {
-    width: 90%;
-  }
-
-  .pre-header .container {
-    width: 100%;
-  }
-
-  .pre-header span:nth-child(2) {
-    display: none;
+  .sliders {
+    height: 25vh;
   }
 
   header {
@@ -30,7 +22,7 @@
     flex: none;
   }
 
-  .header-bottom {
+  header .bottom {
     display: none;
   }
 
@@ -89,6 +81,17 @@
   .categories .container {
     width: 90%;
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 8px;
+  }
+
+  .section-featured {
+    width: 90%;
+  }
+
+  .products {
+    grid-template-columns: repeat(3 , 1fr);
+    grid-template-rows: auto;
   }
 
   .user-panel span:nth-child(2) {
@@ -115,6 +118,11 @@
     row-gap: 3em;
     column-gap: .25em;
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .banner {
+    width: 90%;
+    height: 25vh;
   }
 
   .banner-container {
@@ -212,6 +220,10 @@
     height: 2.5em;
   }
 
+  .card {
+    width: auto;
+  }
+
   .thumb-big {
     margin: 0;
     width: 100%;
@@ -276,9 +288,7 @@
       height: 47vh;
     }
 
-    .card {
-      width: 14vw;
-    }
+    
 
     .card-collection {
       grid-template-columns: auto auto auto auto auto;

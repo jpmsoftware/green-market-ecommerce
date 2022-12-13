@@ -1,47 +1,56 @@
-var connection;
-var dbconfig = require('../config/db.config');
 var mysql = require('mysql');
+var dbconfig = require('../config/db.config');
+var connection;
+
+const connectToDatabase = () => {
+  connection = mysql.createConnection(dbconfig);
+}
 
 const Product = function (id, name, description, price, img) {
   this.id = id,
-    this.name = name,
-    this.description = description,
-    this.price = price,
-    this.img = img
+  this.name = name,
+  this.description = description,
+  this.price = price,
+  this.img = img
 }
 
-exports.getFeaturedProducts = function () {
-  let featuredProducts = [];
-  let sql = 'CALL listFeaturedProducts()';
+exports.getFeaturedProducts = () => {
+  let products = [];
+  let query = 'CALL listFeaturedProducts()';
 
   connectToDatabase();
 
   return new Promise((resolve, reject) => {
-    connection.query(sql, (error, results) => {
+    connection.query(query, (error, results) => {
       if (error) {
         reject(error);
       } else {
-        results[0].forEach(element => {
-          let product = new Product(element.id, element.nombre, element.descripcion, element.precio, element.imagen);
+        results[0].forEach(object => {
+          let product = new Product(
+            object.id, 
+            object.nombre, 
+            object.descripcion, 
+            object.precio, 
+            object.imagen);
 
-          featuredProducts.push(product);
+          products.push(product);
         });
 
-        resolve(featuredProducts);
+        resolve(products);
       }
       connection.end();
     })
   });
 }
 
-exports.getProductsByCategory = function (category) {
+exports.getProductsByCategory = (category) => {
   let products = [];
-  let sql = `CALL listProductsByCategory(${JSON.stringify(category)})`;
+  let query = `CALL listProductsByCategory(${JSON.stringify(category)})`;
 
   connectToDatabase();
 
   return new Promise((resolve, reject) => {
-    connection.query(sql, (error, results) => {
+    connection.query(query, (error, results) => {
       if (error) {
         reject(error);
       } else {
@@ -58,14 +67,14 @@ exports.getProductsByCategory = function (category) {
   });
 }
 
-exports.searchProducts = function (query) {
+exports.searchProducts = (id) => {
   let products = [];
-  let sql = `CALL searchProducts("${query}")`;
+  let query = `CALL searchProducts("${id}")`;
 
   connectToDatabase();
 
   return new Promise((resolve, reject) => {
-    connection.query(sql, (error, results) => {
+    connection.query(query, (error, results) => {
       if (error) {
         reject(error);
       } else {
@@ -74,14 +83,9 @@ exports.searchProducts = function (query) {
 
           products.push(product);
         })
-
         resolve(products);
       }    
       connection.end();
     });
   });
-}
-
-const connectToDatabase = () => {
-  connection = mysql.createConnection(dbconfig);
 }

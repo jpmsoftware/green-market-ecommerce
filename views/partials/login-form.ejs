@@ -1,0 +1,21 @@
+<div class="login-window" id="login-window">
+  <h2>Iniciar sesión</h2>
+
+  <form action="/login" method="POST">
+    <label for="">E-Mail
+      <input type="email" name="email" class="user-email" placeholder="Escribe tu E-Mail" required>
+    </label>
+
+    <label for="">Contraseña
+      <input type="password" name="password" class="user-pass" placeholder="Escribe tu Contraseña" required>
+    </label>
+
+    <input type="submit" class="btn-login" id="btn-login" value="Ingresar">
+
+    <div>
+      <a href="/signup">Registrarse</a>
+    </div>
+
+    <img src="/img/icon-close.svg" alt="close" class="icon-close-cross" id="icon-close-cross">
+  </form>
+</div>

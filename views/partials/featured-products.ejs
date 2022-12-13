@@ -1,0 +1,22 @@
+<section class="section-featured">
+  <div class="heading">
+    <h2>Productos destacados</h2>
+    <hr>
+  </div>
+  
+  <div class="products">
+    <% for (var i=0; i < featuredProducts.length; i++) { %>
+      <div class="card">
+        <div class="thumb-container">
+          <img src="/data/thumbs/small/<%= featuredProducts[i].img %>" class="product-image" alt="image">
+        </div>
+        <div class="info">
+          <h4 class="product-name"><%= featuredProducts[i].name %></h4>
+          <span class="product-description" style="display: none"><%= featuredProducts[i].description %></span>
+          <p class="product-price">$ <%= featuredProducts[i].price %></p>
+          <button class="button-add">Agregar al carrito</button>
+        </div>
+      </div>
+      <% } %>
+  </div>
+</section>

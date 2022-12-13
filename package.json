@@ -1,7 +1,7 @@
 {
   "name": "green-market",
   "version": "1.0.0",
-  "description": "fully equiped vegan e-commerce",
+  "description": "Vegan E-Commerce",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

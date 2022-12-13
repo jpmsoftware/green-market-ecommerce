@@ -9,6 +9,7 @@ var mobileMenu = document.getElementById('header-bottom');
 var btnAddProduct = document.getElementById('agregar');
 var favourites = document.getElementById('favourites');
 var iconClose = document.getElementById('icon-close');
+var iconCloseCross = document.getElementById('icon-close-cross');
 var closeIcon = document.getElementById('icon-close-modal');
 var cards = document.querySelectorAll('.card');
 var btnSearch = document.getElementById('btn-search');
@@ -24,6 +25,21 @@ var autoCompleteElement = document.getElementById('suggestions');
 var itemsCounterElement = document.querySelector('.items-counter');
 var loginIcon = document.getElementById('login-icon');
 var loginWindow = document.getElementById('login-window');
+
+const closeTopElements = () => {
+  /* When user clicks on blank screen, this function 
+  hides all top elements (z-index) */
+
+  let topElements = document.getElementsByClassName('top');
+
+  Array.from(topElements).forEach(element => {
+    element.classList.remove('visible');
+    element.classList.remove('flex');
+  });
+
+  body.classList.remove('block-scroll');
+  mask.classList.remove('visible');
+}
 
 /*===================================================================*\
 \*==========================EVENT HANDLERS===========================*/
@@ -67,6 +83,10 @@ searchInput.addEventListener('keyup', (e) => {
     autoCompleteElement.classList.remove('visible');
   }
 });
+
+iconCloseCross.addEventListener('click', () => { 
+  closeTopElements();
+ });
 
 btnSearch.addEventListener('click', () => document.forms.namedItem('search-form').submit());
 
@@ -220,17 +240,3 @@ function searchSuggestions(input) {
   return data;
 }
 
-const closeTopElements = () => {
-  /* When user clicks on blank screen, this function 
-  hides all top elements (z-index) */
-
-  let topElements = document.getElementsByClassName('top');
-
-  Array.from(topElements).forEach(element => {
-    element.classList.remove('visible');
-    element.classList.remove('flex');
-  });
-
-  body.classList.remove('block-scroll');
-  mask.classList.remove('visible');
-}
